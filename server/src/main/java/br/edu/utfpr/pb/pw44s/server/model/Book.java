@@ -23,13 +23,15 @@ public class Book {
     private String name;
 
     @NotNull
+    private String author;
+
+    @NotNull
     @Column(length = 1024)
     private String description;
 
     @NotNull
     private BigDecimal price;
 
-    @Column(name = "image_url", length = 1024)
     private String imageURL;
 
     @ManyToOne

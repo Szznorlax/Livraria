@@ -17,6 +17,9 @@ public class BookDTO {
     private String name;
 
     @NotNull
+    private String author;
+
+    @NotNull
     private String description;
 
     @NotNull
