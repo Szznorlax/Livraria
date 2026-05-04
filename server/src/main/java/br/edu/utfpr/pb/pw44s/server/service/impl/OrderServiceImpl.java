@@ -39,7 +39,7 @@ public class OrderServiceImpl implements IOrderService {
     @Override
     @Transactional
     public OrderDTO createOrder(CreateOrderDTO createOrderDTO, User user) {
-        // Buscar e validar endereço
+        // Buscando e validando o endereço
         Address address = addressRepository.findById(createOrderDTO.getAddressId())
                 .orElseThrow(() -> new EntityNotFoundException("Endereço não encontrado"));
 
@@ -48,7 +48,7 @@ public class OrderServiceImpl implements IOrderService {
         }
 
 
-        // Criar o pedido
+        // Crição de um novo pedido
         Order order = new Order();
         order.setUser(user);
         order.setShippingAddress(address);
@@ -56,7 +56,7 @@ public class OrderServiceImpl implements IOrderService {
         List<OrderItem> orderItems = new ArrayList<>();
         BigDecimal totalAmount = BigDecimal.ZERO;
 
-        // Processar cada item do pedido
+        // Processar itens do pedido
         for (CreateOrderDTO.OrderItemRequest itemRequest : createOrderDTO.getItems()) {
             Book book = bookRepository.findById(itemRequest.getBookId())
                     .orElseThrow(() -> new EntityNotFoundException("Livro não encontrado: " + itemRequest.getBookId()));
@@ -69,7 +69,8 @@ public class OrderServiceImpl implements IOrderService {
 
             orderItems.add(orderItem);
 
-            // Calcular subtotal do item
+
+            // Calculo do total do pedido
             BigDecimal itemSubtotal = book.getPrice().multiply(BigDecimal.valueOf(itemRequest.getQuantity()));
             totalAmount = totalAmount.add(itemSubtotal);
         }
