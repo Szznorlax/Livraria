@@ -1,12 +1,13 @@
 import './App.css'
+import { HomePage } from './pages/home'
+import { RegisterPage } from './pages/register'
 
 function App() {
-
   return (
     <>
-      <h1>Bem vindo!</h1>
+      <HomePage />
+      <RegisterPage />
     </>
   )
 }
-
 export default App
