@@ -10,3 +10,8 @@ export interface IResponse {
     message?: string;
     data?: object
 }
+
+export interface IUserLogin {
+    username: string;
+    password: string;
+}
