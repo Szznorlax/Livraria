@@ -1,15 +1,12 @@
-import './App.css'
-import { HomePage } from './pages/home'
-import { LoginPage } from './pages/login'
-import { RegisterPage } from './pages/register'
+import "./App.css";
+import { AppRoutes } from "@/routes/app-routes";
 
 function App() {
   return (
     <>
-      <HomePage />
-      <RegisterPage />
-      <LoginPage />
+      <AppRoutes />
     </>
-  )
+  );
 }
-export default App
+
+export default App;
