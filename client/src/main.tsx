@@ -13,6 +13,15 @@ import "primeicons/primeicons.css"; //icons
 import "primeflex/primeflex.css"; //flex utilities
 import { AuthProvider } from "@/context/AuthContext";
 
+const themeId = "theme-link";
+const themeHref =
+  "https://unpkg.com/primereact/resources/themes/lara-light-blue/theme.css";
+const link = document.createElement("link");
+link.id = themeId;
+link.rel = "stylesheet";
+link.href = themeHref;
+document.head.appendChild(link);
+
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <BrowserRouter>
