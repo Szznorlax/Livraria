@@ -35,3 +35,14 @@ export  interface  ICategory {
     id?:  number;
     name:  string;
 }
+
+export interface IBook {
+  id?: number;
+  name: string;
+  author : string;
+  description: string;
+  price: number;
+  category: ICategory;
+  imageName?: string;
+  contentType?: string;
+}
