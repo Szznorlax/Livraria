@@ -95,6 +95,7 @@ export const BookListPage = () => {
       <DataTable value={data} stripedRows>
         <Column field="id" header="ID" style={{ width: "5%" }} />
         <Column field="name" header="Nome" />
+        <Column field="author" header="Autor" />
         <Column field="description" header="Descrição" />
         <Column header="Preço" body={priceTemplate} style={{ width: "15%" }} />
         <Column field="category.name" header="Categoria" />

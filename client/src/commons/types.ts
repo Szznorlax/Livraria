@@ -45,4 +45,5 @@ export interface IBook {
   category: ICategory;
   imageName?: string;
   contentType?: string;
+  imageURL?: string;
 }
