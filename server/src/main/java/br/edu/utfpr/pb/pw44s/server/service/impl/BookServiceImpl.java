@@ -7,6 +7,8 @@ import br.edu.utfpr.pb.pw44s.server.service.IBookService;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class BookServiceImpl extends CrudServiceImpl<Book, Long>
         implements IBookService {
@@ -20,6 +22,11 @@ public class BookServiceImpl extends CrudServiceImpl<Book, Long>
     @Override
     protected JpaRepository<Book, Long> getRepository() {
         return bookRepository;
+    }
+
+    @Override
+    public List<Book> findByCategoryId(Long categoryId) {
+        return bookRepository.findByCategoryId(categoryId);
     }
 
 }
