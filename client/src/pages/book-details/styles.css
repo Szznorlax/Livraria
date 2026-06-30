@@ -16,34 +16,34 @@
   justify-content: center;
   gap: 1rem;
   font-size: 1.2rem;
-  color: #666;
+  color: #6b4f3a;
 }
 
 .book-details-content {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 3rem;
-  background: #fff;
-  padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  gap: 2rem;
+  background: rgba(255, 255, 255, 0.94);
+  padding: 1.5rem;
+  border-radius: 24px;
+  border: 1px solid rgba(122, 70, 41, 0.14);
+  box-shadow: 0 16px 40px rgba(74, 47, 34, 0.1);
 }
 
 @media (max-width: 768px) {
   .book-details-content {
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 1.5rem;
   }
 }
 
-/* Imagem do Livro */
 .book-details-image {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #f5f5f5;
-  border-radius: 8px;
-  min-height: 400px;
+  background: linear-gradient(135deg, #f8eadc 0%, #edd8bf 100%);
+  border-radius: 20px;
+  min-height: 420px;
   overflow: hidden;
 }
 
@@ -51,7 +51,6 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-
 }
 
 .book-details-image .no-image {
@@ -60,7 +59,7 @@
   align-items: center;
   justify-content: center;
   gap: 1rem;
-  color: #999;
+  color: #8b5e3c;
   font-size: 2rem;
 }
 
@@ -68,24 +67,23 @@
   font-size: 4rem;
 }
 
-/* Informações do Livro */
 .book-details-info {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1.2rem;
 }
 
 .book-title {
   font-size: 2rem;
-  font-weight: bold;
-  color: #333;
+  font-weight: 800;
+  color: #4a2f22;
   margin: 0;
 }
 
 .book-author,
 .book-category {
   font-size: 1rem;
-  color: #666;
+  color: #7a5a45;
 }
 
 .book-author p,
@@ -95,42 +93,42 @@
 
 .book-author strong,
 .book-category strong {
-  color: #333;
-  font-weight: 600;
+  color: #4a2f22;
+  font-weight: 700;
 }
 
 .book-price {
-  padding: 1rem;
-  background: #f0f9ff;
-  border-left: 4px solid #0066cc;
-  border-radius: 4px;
+  padding: 1rem 1.1rem;
+  background: linear-gradient(90deg, #f8eadc 0%, #f2dcc7 100%);
+  border-left: 4px solid #8b4a1f;
+  border-radius: 12px;
 }
 
 .price-value {
   font-size: 1.8rem;
-  font-weight: bold;
-  color: #0066cc;
+  font-weight: 800;
+  color: #8b4a1f;
 }
 
 .book-description {
-  padding: 1.5rem;
-  background: #f9f9f9;
-  border-radius: 8px;
+  padding: 1.2rem 1.3rem;
+  background: #fcf8f3;
+  border-radius: 16px;
+  border: 1px solid #f0e0cf;
 }
 
 .book-description h3 {
-  margin: 0 0 1rem 0;
-  color: #333;
-  font-size: 1.2rem;
+  margin: 0 0 0.7rem 0;
+  color: #4a2f22;
+  font-size: 1.15rem;
 }
 
 .book-description p {
   margin: 0;
-  color: #666;
+  color: #6f5748;
   line-height: 1.6;
 }
 
-/* Seletor de Quantidade */
 .quantity-selector {
   display: flex;
   align-items: center;
@@ -138,35 +136,35 @@
 }
 
 .quantity-selector label {
-  font-weight: 600;
-  color: #333;
+  font-weight: 700;
+  color: #4a2f22;
   white-space: nowrap;
 }
 
 .quantity-input {
   display: flex;
   align-items: center;
-  border: 1px solid #ddd;
-  border-radius: 4px;
+  border: 1px solid #dcc5b0;
+  border-radius: 999px;
   overflow: hidden;
-  background: #fff;
+  background: #fffdf9;
 }
 
 .qty-btn {
   width: 40px;
   height: 40px;
   border: none;
-  background: #f5f5f5;
+  background: transparent;
   cursor: pointer;
   font-size: 1.2rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background-color 0.2s;
+  color: #8b4a1f;
 }
 
 .qty-btn:hover:not(:disabled) {
-  background: #e0e0e0;
+  background: #f6e8d7;
 }
 
 .qty-btn:disabled {
@@ -180,14 +178,15 @@
   border: none;
   padding: 0.5rem;
   font-size: 1rem;
-  font-weight: 600;
+  font-weight: 700;
+  background: transparent;
+  color: #4a2f22;
 }
 
 .qty-input:focus {
   outline: none;
 }
 
-/* Botões de Ação */
 .action-buttons {
   display: flex;
   gap: 1rem;
@@ -197,42 +196,41 @@
 .action-buttons :global(.p-button) {
   flex: 1;
   min-width: 150px;
-  padding: 0.75rem 1.5rem;
+  padding: 0.8rem 1.1rem;
   font-size: 1rem;
-  font-weight: 600;
-  border-radius: 4px;
+  font-weight: 700;
+  border-radius: 999px;
   transition: all 0.3s ease;
 }
 
 .action-buttons :global(.p-button-success) {
-  background: #10b981;
-  border-color: #10b981;
+  background: #8b4a1f;
+  border-color: #8b4a1f;
 }
 
 .action-buttons :global(.p-button-success:hover) {
-  background: #059669;
-  border-color: #059669;
+  background: #6e3816;
+  border-color: #6e3816;
 }
 
 .action-buttons :global(.p-button) {
-  background: #0066cc;
-  border-color: #0066cc;
+  background: #4a2f22;
+  border-color: #4a2f22;
 }
 
 .action-buttons :global(.p-button:hover) {
-  background: #0052a3;
-  border-color: #0052a3;
+  background: #35211a;
+  border-color: #35211a;
 }
 
 .book-id {
   margin-top: 1rem;
   padding-top: 1rem;
-  border-top: 1px solid #eee;
-  color: #999;
+  border-top: 1px solid #f0e0cf;
+  color: #9b7f6f;
   text-align: right;
 }
 
-/* Responsivo */
 @media (max-width: 768px) {
   .book-details-container {
     padding: 1rem;

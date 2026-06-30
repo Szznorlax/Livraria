@@ -9,6 +9,7 @@ import { useRef, useState } from "react";
 import type { IUserRegister } from "@/commons/types";
 import AuthService from "@/services/auth-service";
 import { Toast } from "primereact/toast";
+import "./styles.css";
 
 export const RegisterPage = () => {
   const {
@@ -57,12 +58,18 @@ export const RegisterPage = () => {
     }
   };
   return (
-    <div className="flex justify-center items-start pt-30 px-4 bg-gray-100 dark:bg-gray-900">
+    <div className="auth-page">
       <Toast ref={toast} />
-      <Card title="Registrar Conta" className="w-full max-w-md">
-        <form onSubmit={handleSubmit(onSubmit)} className="p-fluid space-y-4">
-          <div>
-            <label className="block mb-2">Nome de Exibição</label>
+      <Card className="auth-card">
+        <div className="auth-brand">
+          <i className="pi pi-book" style={{ fontSize: "2rem", color: "#8b4a1f" }}></i>
+          <h1>Crie sua conta</h1>
+          <p>Comece sua coleção favorita hoje mesmo</p>
+        </div>
+
+        <form onSubmit={handleSubmit(onSubmit)} className="auth-form">
+          <div className="auth-field">
+            <label>Nome de Exibição</label>
             <Controller
               name="displayName"
               control={control}
@@ -79,8 +86,8 @@ export const RegisterPage = () => {
               <small className="p-error">{errors.displayName.message}</small>
             )}
           </div>
-          <div>
-            <label className="block mb-2">Usuário</label>
+          <div className="auth-field">
+            <label>Usuário</label>
             <Controller
               name="username"
               control={control}
@@ -97,8 +104,8 @@ export const RegisterPage = () => {
               <small className="p-error">{errors.username.message}</small>
             )}
           </div>
-          <div>
-            <label className="block mb-2">Senha</label>
+          <div className="auth-field">
+            <label>Senha</label>
             <Controller
               name="password"
               control={control}
@@ -126,13 +133,9 @@ export const RegisterPage = () => {
             disabled={loading || isSubmitting}
             className="w-full mt-3"
           />
-          <div className="text-center mt-3">
-            <small>
-              Já tem uma conta?{" "}
-              <Link to="/login" className="text-primary">
-                Fazer login
-              </Link>
-            </small>
+          <div className="auth-link">
+            <span>Já tem uma conta? </span>
+            <Link to="/login">Fazer login</Link>
           </div>
         </form>
       </Card>

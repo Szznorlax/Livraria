@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Menubar } from "primereact/menubar";
 import type { MenuItem } from "primereact/menuitem";
-import { Avatar } from "primereact/avatar";
 import { Button } from "primereact/button";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "@/context/hooks/use-auth";
@@ -9,7 +8,6 @@ import { InputSwitch } from "primereact/inputswitch";
 
 const TopMenu: React.FC = () => {
   const navigate = useNavigate();
-  const user = "user@email.com";
   const [darkMode, setDarkMode] = useState<boolean>(() => {
     return localStorage.getItem("theme") === "dark";
   });
@@ -32,38 +30,6 @@ const TopMenu: React.FC = () => {
       ? [
         { label: "Home", icon: "pi pi-home", command: () => navigate("/") },
         {
-          label: "Categorias",
-          icon: "pi pi-box",
-          items: [
-            {
-              label: "Listar",
-              icon: "pi pi-list",
-              command: () => navigate("/categories"),
-            },
-            {
-              label: "Novo",
-              icon: "pi pi-plus",
-              command: () => navigate("/categories/new"),
-            },
-          ],
-        },
-        {
-          label: "Livros",
-          icon: "pi pi-box",
-          items: [
-            {
-              label: "Listar",
-              icon: "pi pi-list",
-              command: () => navigate("/books"),
-            },
-            {
-              label: "Novo",
-              icon: "pi pi-plus",
-              command: () => navigate("/books/new"),
-            },
-          ],
-        },
-        {
           label: "Carrinho",
           icon: "pi pi-shopping-cart",
           command: () => navigate("/cart"),
@@ -81,13 +47,6 @@ const TopMenu: React.FC = () => {
       className="flex align-items-center gap-2 cursor-pointer"
       onClick={() => navigate("/")}
     >
-      <img
-        src="/assets/images/utfpr-logo-nb.png"
-        alt="Logo"
-        height={32}
-        style={{ objectFit: "contain" }}
-      />
-      <span className="font-bold text-lg hidden sm:block">PW44S</span>
     </div>
   );
 
@@ -112,13 +71,23 @@ const TopMenu: React.FC = () => {
         />
       </div>
 
-      {authenticated && (
+      {!authenticated ? (
         <>
-          <span className="font-semibold hidden sm:block">{user}</span>
-          <Avatar
-            image="https://api.dicebear.com/9.x/bottts-neutral/svg?seed=Caleb"
-            shape="square"
+          <Button
+            label="Login"
+            icon="pi pi-sign-in"
+            className="p-button-text"
+            onClick={() => navigate("/login")}
           />
+          <Button
+            label="Cadastro"
+            icon="pi pi-user-plus"
+            className="p-button-outlined"
+            onClick={() => navigate("/register")}
+          />
+        </>
+      ) : (
+        <>
           <Button
             icon="pi pi-sign-out"
             className="p-button-text"

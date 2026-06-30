@@ -9,6 +9,7 @@ import type { AuthenticationResponse, IUserLogin } from "@/commons/types";
 import AuthService from "@/services/auth-service";
 import { Toast } from "primereact/toast";
 import { useAuth } from "@/context/hooks/use-auth";
+import "./styles.css";
 
 export const LoginPage = () => {
   const {
@@ -58,17 +59,18 @@ export const LoginPage = () => {
     }
   };
   return (
-    <div className="flex justify-content-center align-items-center min-h-screen p-4">
+    <div className="auth-page">
       <Toast ref={toast} />
-      <Card title="Login" className="w-full sm:w-20rem shadow-2">
-        <form
-          onSubmit={handleSubmit(onSubmit)}
-          className="flex flex-column gap-3"
-        >
-          <div>
-            <label htmlFor="username" className="block mb-2">
-              Usuário
-            </label>
+      <Card className="auth-card">
+        <div className="auth-brand">
+          <i className="pi pi-book" style={{ fontSize: "2rem", color: "#8b4a1f" }}></i>
+          <h1>Bem-vindo de volta</h1>
+          <p>Entre para continuar sua jornada literária</p>
+        </div>
+
+        <form onSubmit={handleSubmit(onSubmit)} className="auth-form">
+          <div className="auth-field">
+            <label htmlFor="username">Usuário</label>
             <Controller
               name="username"
               control={control}
@@ -85,10 +87,8 @@ export const LoginPage = () => {
               <small className="p-error">{errors.username.message}</small>
             )}
           </div>
-          <div>
-            <label htmlFor="password" className="block mb-2">
-              Senha
-            </label>
+          <div className="auth-field">
+            <label htmlFor="password">Senha</label>
             <Controller
               name="password"
               control={control}
@@ -117,13 +117,9 @@ export const LoginPage = () => {
             disabled={loading || isSubmitting}
           />
         </form>
-        <div className="text-center mt-3">
-          <small>
-            Não tem uma conta?{" "}
-            <Link to="/register" className="text-primary">
-              Criar conta
-            </Link>
-          </small>
+        <div className="auth-link">
+          <span>Não tem uma conta? </span>
+          <Link to="/register">Criar conta</Link>
         </div>
       </Card>
     </div>
