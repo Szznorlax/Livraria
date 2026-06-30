@@ -47,3 +47,15 @@ export interface IBook {
   contentType?: string;
   imageURL?: string;
 }
+
+export interface IAddress {
+  id?: number;
+  street: string;
+  number: string;
+  complement?: string;
+  city: string;
+  state: string;
+  zipCode: string;
+  country?: string;
+  recipientName?: string;
+}
