@@ -10,6 +10,7 @@ export const BookDetailsPage = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const [book, setBook] = useState<IBook | null>(null);
+  const [similarTitles, setSimilarTitles] = useState<IBook[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [quantity, setQuantity] = useState(1);
@@ -34,6 +35,25 @@ export const BookDetailsPage = () => {
 
     fetchBook();
   }, [id]);
+
+  useEffect(() => {
+    const loadSimilarTitles = async () => {
+      if (!book) {
+        setSimilarTitles([]);
+        return;
+      }
+
+      const response = await BookService.findAll();
+      if (response.success && Array.isArray(response.data)) {
+        const similar = (response.data as IBook[])
+          .filter((item) => item.id !== book.id && item.category?.name === book.category?.name)
+          .slice(0, 5);
+        setSimilarTitles(similar);
+      }
+    };
+
+    loadSimilarTitles();
+  }, [book]);
 
   const handleAddToCart = () => {
     if (book) {
@@ -217,6 +237,28 @@ export const BookDetailsPage = () => {
           {book.id && (
             <div className="book-id">
               <small>ID do Produto: {book.id}</small>
+            </div>
+          )}
+
+          {similarTitles.length > 0 && (
+            <div className="similar-titles-section">
+              <h2>Títulos similares</h2>
+              <div className="similar-titles-list">
+                {similarTitles.map((similar) => (
+                  <button
+                    key={similar.id}
+                    type="button"
+                    className="similar-title-item"
+                    onClick={() => similar.id && navigate(`/books/details/${similar.id}`)}
+                  >
+                    <div>
+                      <strong>{similar.name}</strong>
+                      <span>{similar.author}</span>
+                    </div>
+                    <span>Ver</span>
+                  </button>
+                ))}
+              </div>
             </div>
           )}
         </div>
