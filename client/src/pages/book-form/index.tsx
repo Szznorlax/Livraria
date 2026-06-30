@@ -134,6 +134,23 @@ export const BookFormPage = () => {
           </div>
 
           <div>
+            <label className="block mb-1">Autor</label>
+            <Controller
+              name="author"
+              control={control}
+              rules={{ required: "Autor é obrigatório" }}
+              render={({ field }) => (
+                <InputText {...field} className="w-full" />
+              )}
+            />
+            {errors.author && (
+              <p className="text-red-500 text-sm">
+                {errors.author.message}
+              </p>
+            )}
+          </div>
+
+          <div>
             <label className="block mb-1">Descrição</label>
             <Controller
               name="description"

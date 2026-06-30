@@ -1,11 +1,14 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import type { IBook, IResponse } from '@/commons/types';
 import BookService from '@/services/book-service';
+import './styles.css';
 
 export const HomePage = () => {
   const [books, setBooks] = useState<IBook[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchBooks = async () => {
@@ -21,29 +24,58 @@ export const HomePage = () => {
     fetchBooks();
   }, []);
 
-  if (loading) return <div>Carregando...</div>;
-  if (error) return <div>Erro: {error}</div>;
+  const handleBookClick = (bookId?: number) => {
+    if (bookId) {
+      navigate(`/books/details/${bookId}`);
+    }
+  };
+
+  if (loading) return <div className="home-container loading">Carregando...</div>;
+  if (error) return <div className="home-container error">Erro: {error}</div>;
 
   return (
-    <>
-      <h1>Livros Disponíveis</h1>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: '20px' }}>
+    <div className="home-container">
+      <h1 className="page-title">Livros Disponíveis</h1>
+      <div className="books-grid">
         {books.map(book => (
-          <div key={book.id} style={{ border: '1px solid #ccc', padding: '10px', borderRadius: '4px' }}>
-            {book.imageURL && (
-              <img
-                src={book.imageURL}
-                alt={book.name}
-                style={{ width: '100%', height: '250px', objectFit: 'cover', marginBottom: '10px' }}
-              />
-            )}
-            <h3>{book.name}</h3>
-            <p><strong>Autor:</strong> {book.author}</p>
-            <p><strong>Preço:</strong> R$ {parseFloat(book.price.toString()).toFixed(2)}</p>
-            <p>{book.description}</p>
+          <div
+            key={book.id}
+            className="book-card"
+            onClick={() => handleBookClick(book.id)}
+            role="button"
+            tabIndex={0}
+            onKeyPress={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                handleBookClick(book.id);
+              }
+            }}
+          >
+            <div className="book-card-image">
+              {book.imageURL ? (
+                <img
+                  src={book.imageURL}
+                  alt={book.name}
+                />
+              ) : (
+                <div className="no-image">
+                  <i className="pi pi-image"></i>
+                </div>
+              )}
+            </div>
+            <div className="book-card-content">
+              <h3 className="book-card-title">{book.name}</h3>
+              <p className="book-card-author">{book.author}</p>
+              <p className="book-card-price">
+                R$ {parseFloat(book.price.toString()).toFixed(2)}
+              </p>
+              <p className="book-card-description">{book.description}</p>
+              <div className="book-card-action">
+                <span className="view-details">Ver Detalhes</span>
+              </div>
+            </div>
           </div>
         ))}
       </div>
-    </>
+    </div>
   );
 };

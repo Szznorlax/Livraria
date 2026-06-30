@@ -8,6 +8,7 @@ import { CategoryListPage } from "@/pages/category-list";
 import { CategoryFormPage } from "@/pages/category-form";
 import { BookListPage } from "@/pages/book-list";
 import { BookFormPage } from "@/pages/book-form";
+import { BookDetailsPage } from "@/pages/book-details";
 
 export function AppRoutes() {
   return (
@@ -26,6 +27,7 @@ export function AppRoutes() {
 		      <Route path="/categories/:id"  element={<CategoryFormPage  />}  />
           <Route path="/books" element={<BookListPage />} />
           <Route  path="/books/new"  element={<BookFormPage />}  />
+          <Route  path="/books/details/:id"  element={<BookDetailsPage />}  />
 		      <Route  path="/books/:id"  element={<BookFormPage />}  />
         </Route>
       </Route>
