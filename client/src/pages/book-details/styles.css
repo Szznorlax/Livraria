@@ -189,14 +189,16 @@
 
 .action-buttons {
   display: flex;
+  align-items: center;
   gap: 1rem;
   flex-wrap: wrap;
 }
 
 .action-buttons :global(.p-button) {
-  flex: 1;
-  min-width: 150px;
-  padding: 0.8rem 1.1rem;
+  flex: none;
+  min-width: 180px;
+  width: auto;
+  padding: 0.95rem 1.3rem;
   font-size: 1rem;
   font-weight: 700;
   border-radius: 999px;

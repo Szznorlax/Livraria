@@ -203,13 +203,13 @@ export const BookDetailsPage = () => {
                 label="Adicionar ao Carrinho"
                 icon="pi pi-shopping-cart"
                 onClick={handleAddToCart}
-                className="p-button-success"
+                className="p-button-success p-button-lg"
               />
               <Button
                 label="Comprar Agora"
                 icon="pi pi-check"
                 onClick={handleBuyNow}
-                className="p-button"
+                className="p-button-secondary p-button-lg"
               />
             </div>
           </div>
