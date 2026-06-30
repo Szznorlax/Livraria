@@ -38,6 +38,48 @@
   gap: 1rem;
 }
 
+.auth-field .p-inputtext,
+.auth-field .p-password,
+.auth-field .p-password input,
+.auth-field .p-password .p-inputtext,
+.auth-field .p-password .p-inputtext input,
+.auth-form .p-password,
+.auth-form .p-password .p-inputtext,
+.auth-form .p-password input {
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  box-sizing: border-box;
+}
+
+.auth-field .p-password {
+  display: block;
+  width: 100% !important;
+}
+
+.auth-field .p-password,
+.auth-field .p-password .p-inputtext,
+.auth-field .p-password .p-inputtext input,
+.auth-field .p-password input {
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  box-sizing: border-box;
+}
+
+.auth-field .p-password .p-inputtext {
+  display: block;
+}
+
+.auth-field .p-password .p-inputtext input {
+  display: block;
+}
+
+.auth-field .p-inputtext:focus,
+.auth-field .p-password input:focus {
+  width: 100% !important;
+}
+
 .auth-field label {
   display: block;
   margin-bottom: 0.35rem;

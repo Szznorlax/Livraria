@@ -77,7 +77,7 @@ export const RegisterPage = () => {
               render={({ field }) => (
                 <InputText
                   {...field}
-                  className={classNames({ "p-invalid": errors.displayName })}
+                  className={classNames("w-full", { "p-invalid": errors.displayName })}
                   placeholder="Ex: João das Neves"
                 />
               )}
@@ -95,7 +95,7 @@ export const RegisterPage = () => {
               render={({ field }) => (
                 <InputText
                   {...field}
-                  className={classNames({ "p-invalid": errors.username })}
+                  className={classNames("w-full", { "p-invalid": errors.username })}
                   placeholder="Ex: jsnow"
                 />
               )}
@@ -118,7 +118,8 @@ export const RegisterPage = () => {
                   {...field}
                   toggleMask
                   feedback={false}
-                  className={classNames({ "p-invalid": errors.password })}
+                  className={classNames("w-full", { "p-invalid": errors.password })}
+                  inputClassName="w-full"
                 />
               )}
             />
