@@ -58,4 +58,5 @@ export interface IAddress {
   zipCode: string;
   country?: string;
   recipientName?: string;
+  userName?: string;
 }

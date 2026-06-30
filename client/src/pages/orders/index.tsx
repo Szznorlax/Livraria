@@ -60,9 +60,6 @@ export const OrdersPage = () => {
                   <h3>Pedido #{order.id}</h3>
                   <p>{order.createdAt ? new Date(order.createdAt).toLocaleString('pt-BR') : 'Data indisponível'}</p>
                 </div>
-                <span className={`order-status ${order.status?.toLowerCase() || 'pending'}`}>
-                  {order.status || 'PENDING'}
-                </span>
               </div>
 
               <div className="order-items">
