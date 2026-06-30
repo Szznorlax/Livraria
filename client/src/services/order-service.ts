@@ -40,8 +40,32 @@ const createOrder = async (order: IOrderRequest): Promise<IResponse> => {
   return response;
 };
 
+const findAll = async (): Promise<IResponse> => {
+  let response = {} as IResponse;
+
+  try {
+    const data = await api.get('/orders');
+    response = {
+      status: 200,
+      success: true,
+      message: 'Pedidos carregados com sucesso!',
+      data: data.data,
+    };
+  } catch (err: any) {
+    response = {
+      status: err.response?.status || 500,
+      success: false,
+      message: 'Falha ao carregar os pedidos',
+      data: err.response?.data || err.message,
+    };
+  }
+
+  return response;
+};
+
 const OrderService = {
   createOrder,
+  findAll,
 };
 
 export default OrderService;

@@ -57,24 +57,24 @@ export const CartPage = () => {
     return items.reduce((sum, item) => sum + item.price * item.cartQuantity, 0);
   }, [items]);
 
-  const updateQuantity = (id?: number, delta: number) => {
-    if (!id) return;
+  const updateQuantity = (id: number | undefined, delta: number) => {
+  if (id === undefined) return;
 
-    setItems((prev) => {
-      const updated = prev
-        .map((item) => {
-          if (item.id === id) {
-            const nextQuantity = item.cartQuantity + delta;
-            return nextQuantity > 0 ? { ...item, cartQuantity: nextQuantity } : null;
-          }
-          return item;
-        })
-        .filter(Boolean) as ICartItem[];
+  setItems((prev) => {
+    const updated = prev
+      .map((item) => {
+        if (item.id === id) {
+          const nextQuantity = item.cartQuantity + delta;
+          return nextQuantity > 0 ? { ...item, cartQuantity: nextQuantity } : null;
+        }
+        return item;
+      })
+      .filter(Boolean) as ICartItem[];
 
-      localStorage.setItem('cart', JSON.stringify(updated));
-      return updated;
-    });
-  };
+    localStorage.setItem('cart', JSON.stringify(updated));
+    return updated;
+  });
+};
 
   const removeItem = (id?: number) => {
     if (!id) return;

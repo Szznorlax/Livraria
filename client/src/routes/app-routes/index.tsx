@@ -10,6 +10,7 @@ import { BookListPage } from "@/pages/book-list";
 import { BookFormPage } from "@/pages/book-form";
 import { BookDetailsPage } from "@/pages/book-details";
 import { CartPage } from "@/pages/cart";
+import { OrdersPage } from "@/pages/orders";
 
 export function AppRoutes() {
   return (
@@ -18,18 +19,19 @@ export function AppRoutes() {
         {/* public routes */}
         <Route path="login" element={<LoginPage />} />
         <Route path="register" element={<RegisterPage />} />
+        <Route path="/" element={<HomePage />} />
+        <Route path="/home" element={<HomePage />} />
+        <Route  path="/books/details/:id"  element={<BookDetailsPage />}  />
+        <Route path="/cart" element={<CartPage />} />
+        <Route path="/orders" element={<OrdersPage />} />
 
         {/* protected routes */}
         <Route element={<RequireAuth />}>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/home" element={<HomePage />} />
           <Route path="/categories" element={<CategoryListPage />} />
           <Route path="/categories/new"  element={<CategoryFormPage  />}  />
 		      <Route path="/categories/:id"  element={<CategoryFormPage  />}  />
           <Route path="/books" element={<BookListPage />} />
           <Route  path="/books/new"  element={<BookFormPage />}  />
-          <Route  path="/books/details/:id"  element={<BookDetailsPage />}  />
-          <Route path="/cart" element={<CartPage />} />
 		      <Route  path="/books/:id"  element={<BookFormPage />}  />
         </Route>
       </Route>

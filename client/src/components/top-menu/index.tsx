@@ -68,6 +68,11 @@ const TopMenu: React.FC = () => {
           icon: "pi pi-shopping-cart",
           command: () => navigate("/cart"),
         },
+        {
+          label: "Pedidos",
+          icon: "pi pi-receipt",
+          command: () => navigate("/orders"),
+        },
       ]
     : [];
 
